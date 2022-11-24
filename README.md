@@ -28,7 +28,7 @@ I advise you to set a fixed depth (ex : prof_fixe = 40 for an analysis at D40 pe
 During the analyses, we get few files :<br>
 - the "your_pgn_annotated.pgn" file contains the last game with score/depth for each move<br>
 - the "your_pgn_uci.pgn" file contains the UCI moves (thanks to pgn-extract)<br>
-- the "your_computer_name_reprise_searchmoves/bestmove.ini" file contains the data to resum the analyses<br>
+- the "your_computer_name_reprise_searchmoves/bestmove.ini" file contains the data to resume the analyses<br>
 - in the "engine_eval" directory, the EPD files contain the fen, score, depth, delay of each new analyzed positions<p>
 
 # tips
