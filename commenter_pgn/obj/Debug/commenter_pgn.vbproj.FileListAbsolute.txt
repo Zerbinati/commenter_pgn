@@ -1,0 +1,11 @@
+c:\users\chris\documents\visual studio 2013\Projects\commenter pgn\commenter pgn\bin\Debug\commenter pgn.exe.config
+c:\users\chris\documents\visual studio 2013\Projects\commenter pgn\commenter pgn\bin\Debug\commenter_pgn.exe.config
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\bin\Debug\commenter_pgn.exe.config
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\bin\Debug\commenter_pgn.exe
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\bin\Debug\commenter_pgn.pdb
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\bin\Debug\commenter_pgn.xml
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\obj\Debug\commenter_pgn.Resources.resources
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\obj\Debug\commenter_pgn.vbproj.GenerateResource.Cache
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\obj\Debug\commenter_pgn.exe
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\obj\Debug\commenter_pgn.xml
+C:\Users\chris\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\obj\Debug\commenter_pgn.pdb

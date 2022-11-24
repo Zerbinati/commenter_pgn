@@ -1,0 +1,5 @@
+setoption name Contempt value 0
+setoption name Experience File value Eman.exp
+setoption name Experience MultiPV value false
+setoption name NNUE Eval File value nn-ad9b42354671.nnue
+setoption name SyzygyPath value c:\Syzygy
