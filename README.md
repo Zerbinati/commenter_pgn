@@ -20,9 +20,9 @@ command : commenter_pgn.exe path_to_your_pgn_file.pgn<p>
 # How it works ?
 There are different ways to use this tool :<br>
 - with the bestmove mode, the engine will analyse the opponent's bestmove.<br>
-I advise you to set a delay per move (ex : duree_sec = 600 for an analysis of 10 minutes per move) so you should set prof_fixe = 0.<p>
+I advise you to set a delay per move (ex : duree_sec = 60 for an analysis of 1 minute per move) so you should set prof_fixe = 0.<p>
 
-- with the searchmoves mode, the engine will only analyse the played move (maybe it was not the bestmove).<br>
+- with the searchmoves mode, the engine will only analyse the played move.<br>
 I advise you to set a fixed depth (ex : prof_fixe = 40 for an analysis at D40 per move) so you should set duree_sec = 0.<p>
 
 During the analyses, we get few files :<br>
@@ -32,4 +32,6 @@ During the analyses, we get few files :<br>
 - in the "engine_eval" directory, the EPD files contain the fen, score, depth, delay of each new analyzed positions<p>
 
 # tips
-For those who use engines with a learning feature, I advise you to analyze your defeats (and those of other engines) in bestmove mode with a long analysis delay (eg: 10 min or more per move). In one time, commenter_pgn will show you when your engine made a bad move + what was the bestmove + update your experience file with better data for the played moves + new data containing the best moves + store the analyzed positions to save time on the next analyses.<p>
+For those who use engines with a learning feature, i advise you :<br>
+- to analyze your defeats (and those of other engines) in bestmove mode with a long analysis delay (ex: 10 min or more per move). In one time, commenter_pgn will show you when your engine made a bad move + what was the bestmove + update your experience file with better data for the played moves + new data containing the best moves + store the analyzed positions to save time on the next analyses.<p>
+- to analyze openings in searchmoves with a great depth (ex: D40). In one time, commenter_pgn will update your experience file with better data for the opening moves + fill the holes in the experience data (the engine will get a complete line from the start position to the last position of a trained opening) + store the analyzed positions to save time on the next analyses.<p>
