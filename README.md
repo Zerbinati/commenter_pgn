@@ -3,14 +3,14 @@ Tool to add an evaluation for each move of each game of a PGN file
 
 Prerequisites :<br>
 rename BUREAU.ini to YOUR_COMPUTER_NAME.ini<br>
-set moteur to path_to_your_engine.exe
-set pgnextract = path_to_pgn-extract.exe
-set mode to bestmove or searchmoves
-set duree_sec to your analysis delay per move
-set prof_fixe to your analysis fixed depth
-set taches to your threads number
-set memoire to your hash size
-set priorite to 32 or 64 or 128 or 256 or 16384 or 32768
+set moteur to path_to_your_engine.exe<br>
+set pgnextract = path_to_pgn-extract.exe<br>
+set mode to bestmove or searchmoves<br>
+set duree_sec to your analysis delay per move<br>
+set prof_fixe to your analysis fixed depth<br>
+set taches to your threads number<br>
+set memoire to your hash size<br>
+set priorite to 32 or 64 or 128 or 256 or 16384 or 32768<br>
 
 rename BrainLearn.txt to YOUR_ENGINE_NAME.txt<br>
 set its UCI options<p>
@@ -29,6 +29,7 @@ During the analyses, we get few files :<br>
 - the "your_pgn_annotated.pgn" file contains the last game with score/depth for each move<br>
 - the "your_pgn_uci.pgn" file contains the UCI moves (thanks to pgn-extract)<br>
 - the "your_computer_name_reprise_searchmoves/bestmove.ini" file contains the data to resum the analyses<br>
+- in the "engine_eval" directory, the EPD files contain the fen, score, depth, delay of each new analyzed positions<p>
 
 # tips
-For those who use engines with a learning feature, I advise you to analyze your defeats (and those of other engines) in bestmove mode with a long analysis time (eg: 10 min or more per move). In one go commenter_pgn will improve PGN file move rating + update experience file with better ratings + add best moves + save analyzed position to save time next time.<p>
+For those who use engines with a learning feature, I advise you to analyze your defeats (and those of other engines) in bestmove mode with a long analysis delay (eg: 10 min or more per move). In one time, commenter_pgn will show you when your engine made a bad move + what was the bestmove + update your experience file with better data for the played moves + new data containing the best moves + store the analyzed positions to save time on the next analyses.<p>
