@@ -1,4 +1,4 @@
-﻿Imports System.Threading
+Imports System.Threading
 
 Module modMain
 
@@ -45,9 +45,9 @@ Module modMain
         End If
 
         'chargement parametres
-        moteur = "E:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.03 x64 BMI2.exe"
+        moteur = "E:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.30 x64 BMI2.exe"
         If My.Computer.Name = "PLEXI" Then
-            moteur = "D:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.03 x64 PCNT.exe"
+            moteur = "D:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.30 x64 PCNT.exe"
         End If
         pgnextract = "pgn-extract.exe"
         mode = "bestmove"
@@ -106,7 +106,7 @@ Module modMain
         End If
         My.Computer.FileSystem.WriteAllText(fichierINI, "moteur = " & moteur & vbCrLf _
                                                       & "pgnextract = " & pgnextract & vbCrLf _
-                                                      & "mode = " & mode & " //bestmove : analyse le meilleur coup adverse, searchmoves : analyse uniquement le coup recherché" & vbCrLf _
+                                                      & "mode = " & mode & " //bestmove : analyse the opponent best move, searchmoves : only analyse the le current move" & vbCrLf _
                                                       & "duree_sec = " & duree_sec & vbCrLf _
                                                       & "prof_fixe = " & prof_fixe & vbCrLf _
                                                       & "taches = " & taches & vbCrLf _
@@ -164,7 +164,7 @@ Module modMain
             End If
 
             If My.Computer.FileSystem.FileExists(chaine) Then
-                Console.Write("chargement " & nomFichier(chaine) & "... ")
+                Console.Write("Loading " & nomFichier(chaine) & "... ")
                 bddEPD = My.Computer.FileSystem.ReadAllText(chaine)
                 Console.WriteLine("OK")
             End If
@@ -199,7 +199,7 @@ Module modMain
             End If
 
             If My.Computer.FileSystem.FileExists(chaine) Then
-                Console.Write("chargement " & nomFichier(chaine) & "... ")
+                Console.Write("Loading " & nomFichier(chaine) & "... ")
                 bddEPD = My.Computer.FileSystem.ReadAllText(chaine)
                 tabChaine = Split(bddEPD, vbCrLf)
                 dureeMoyProf = 0
@@ -224,7 +224,7 @@ Module modMain
         lecture = My.Computer.FileSystem.OpenTextFileReader(fichierUCI)
 
         If InStr(moteur_court, "eman", CompareMethod.Text) > 0 Then
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             fichierEXP = "Eman.exp"
             If Not My.Computer.FileSystem.FileExists(fichierEXP) Then
                 fichierEXP = My.Computer.Name & ".exp"
@@ -244,14 +244,14 @@ Module modMain
             End If
         ElseIf InStr(moteur_court, "brainlearn", CompareMethod.Text) > 0 Then
             fichierBIN = Replace(moteur, nomFichier(moteur), "experience.bin")
-            Console.WriteLine("défragmentation " & nomFichier(fichierBIN) & "... ")
+            Console.WriteLine("Defrag " & nomFichier(fichierBIN) & "... ")
             Console.WriteLine(defragBIN(fichierBIN, 1))
 
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             chargerMoteur(moteur, taches, memoire, priorite)
             Console.WriteLine("OK")
         ElseIf InStr(moteur_court, "hypnos", CompareMethod.Text) > 0 Then
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             fichierEXP = "Hypnos.exp"
             If Not My.Computer.FileSystem.FileExists(fichierEXP) Then
                 fichierEXP = My.Computer.Name & ".exp"
@@ -269,14 +269,14 @@ Module modMain
             End If
         ElseIf InStr(moteur_court, "judas", CompareMethod.Text) > 0 Then
             fichierBIN = Replace(moteur, nomFichier(moteur), "experience.bin")
-            Console.WriteLine("défragmentation " & nomFichier(fichierBIN) & "... ")
+            Console.WriteLine("Defrag " & nomFichier(fichierBIN) & "... ")
             Console.WriteLine(defragBIN(fichierBIN, 1))
 
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             chargerMoteur(moteur, taches, memoire, priorite)
             Console.WriteLine("OK")
         ElseIf InStr(moteur_court, "stockfishmz", CompareMethod.Text) > 0 Then
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             fichierEXP = "StockfishMZ.exp"
             If Not My.Computer.FileSystem.FileExists(fichierEXP) Then
                 fichierEXP = My.Computer.Name & ".exp"
@@ -293,7 +293,7 @@ Module modMain
                 Console.WriteLine(moteurEntete)
             End If
         Else
-            Console.Write("chargement " & moteur_court & "... ")
+            Console.Write("Loading " & moteur_court & "... ")
             chargerMoteur(moteur, taches, memoire, priorite)
             Console.WriteLine("OK")
         End If
@@ -318,9 +318,9 @@ Module modMain
                     Select Case tabTmp(0)
                         Case "fichierPGN"
                             If tabTmp(1) <> fichierPGN Then
-                                MsgBox("Le fichier de reprise ne correspond pas au fichier de parties." & vbCrLf _
-                                     & "reprise = " & nomFichier(tabTmp(1)) & vbCrLf _
-                                     & "fichier = " & nomFichier(fichierPGN), MsgBoxStyle.Exclamation)
+                                MsgBox("The resume file isn't attached to the PGN file." & vbCrLf _
+                                     & "resume = " & nomFichier(tabTmp(1)) & vbCrLf _
+                                     & "pgn file = " & nomFichier(fichierPGN), MsgBoxStyle.Exclamation)
                                 End
                             End If
 
@@ -470,15 +470,15 @@ Module modMain
                                 indexReprise = indexCoup - 1
                                 If totCoups > 0 Then
                                     If duree_sec > 0 Then
-                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * duree_sec, Now), "dd/MM/yy HH:mm:ss") & ", " & "moy. P" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * duree_sec, Now), "dd/MM/yy HH:mm:ss") & ", " & "avg. D" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
                                     ElseIf prof_fixe > 0 Then
-                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * dureeMoyProf, Now), "dd/MM/yy HH:mm:ss") & ", P" & Format(prof_fixe, "0") & " (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * dureeMoyProf, Now), "dd/MM/yy HH:mm:ss") & ", D" & Format(prof_fixe, "0") & " (" & Trim(Format(totCoups, "# ##0")) & ")"
                                     End If
                                 Else
                                     If duree_sec > 0 Then
-                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * duree_sec, Now), "dd/MM/yy HH:mm:ss") & ", moy. P0 @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * duree_sec, Now), "dd/MM/yy HH:mm:ss") & ", avg. D0 @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
                                     ElseIf prof_fixe > 0 Then
-                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * dureeMoyProf, Now), "dd/MM/yy HH:mm:ss") & ", P" & Format(prof_fixe, "0") & " (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                        titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format((indexCoup - 1) / nbCoups, "0%") & " (" & Format(nbCoups - (indexCoup - 1)) & "), " & Format(DateAdd(DateInterval.Second, (nbCoups - (indexCoup - 1)) * dureeMoyProf, Now), "dd/MM/yy HH:mm:ss") & ", D" & Format(prof_fixe, "0") & " (" & Trim(Format(totCoups, "# ##0")) & ")"
                                     End If
                                 End If
                             End If
@@ -630,15 +630,15 @@ Module modMain
 
                         If depart = 0 Then
                             If duree_sec > 0 Then
-                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), moy. P" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), avg. D" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
                             ElseIf prof_fixe > 0 Then
-                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), P" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), D" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
                             End If
                         Else
                             If duree_sec > 0 Then
-                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), " & heureFin(depart, indexCoup, nbCoups, indexReprise, True) & ", " & "moy. P" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), " & heureFin(depart, indexCoup, nbCoups, indexReprise, True) & ", " & "avg. D" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
                             ElseIf prof_fixe > 0 Then
-                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", partie " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), " & heureFin(depart, indexCoup, nbCoups, indexReprise, True) & ", P" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
+                                titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0.00%") & ", game " & nbParties & " (" & resultat & ") @ " & Format(indexCoup / nbCoups, "0%") & " (" & Format(nbCoups - indexCoup) & "), " & heureFin(depart, indexCoup, nbCoups, indexReprise, True) & ", D" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
                             End If
                         End If
 
@@ -660,7 +660,7 @@ Module modMain
 
                     Threading.Thread.Sleep(250)
                 ElseIf nbParties_reprise > 0 Then
-                    Console.Title = "reprise @ " & Format(nbParties / nbParties_reprise, "0%")
+                    Console.Title = "resume @ " & Format(nbParties / nbParties_reprise, "0%")
                 End If
 
                 Console.Clear()
@@ -704,13 +704,13 @@ Module modMain
         End If
 
         If duree_sec > 0 Then
-            titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0%") & ", " & nbParties & " parties, moy. P" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
+            titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0%") & ", " & nbParties & " games, avg. D" & Format(totProf / totCoups, "0") & " @ " & duree_sec & " sec/pos (" & Trim(Format(totCoups, "# ##0")) & ")"
         ElseIf prof_fixe > 0 Then
-            titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0%") & ", " & nbParties & " parties, P" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
+            titre = My.Computer.Name & " @ " & Format(cumul / tailleFichier, "0%") & ", " & nbParties & " games, D" & prof_fixe & " (" & Trim(Format(totCoups, "# ##0")) & ")"
         End If
         Console.Title = titre
-        Console.WriteLine("Appuyer sur une touche pour sortir")
-        Console.ReadKey()
+        Console.WriteLine("Press ENTER to close this window.")
+        Console.ReadLine()
 
     End Sub
 
