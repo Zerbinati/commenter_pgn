@@ -34,23 +34,13 @@ Module modMain
         Dim chaine As String, chaine_mem As String, epd_mem As String
         Dim tabChaine() As String, tabTmp() As String, tabEXP(0) As Byte, reponse As String, score As Integer
 
-        If My.Computer.FileSystem.GetFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Documents\Visual Studio 2013\Projects\commenter_pgn\commenter_pgn\bin\Debug\commenter_pgn.exe").LastWriteTime > My.Computer.FileSystem.GetFileInfo(My.Application.Info.AssemblyName & ".exe").LastWriteTime Then
-            MsgBox("Il existe une version plus récente de ce programme !", MsgBoxStyle.Information)
-            End
-        End If
-
         fichierPGN = Replace(Command(), """", "")
         If fichierPGN = "" Then
             End
         End If
 
         'chargement parametres
-        engine = "D:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.30 x64 BMI2.exe"
-        If My.Computer.Name = "PLEXI" Then
-            engine = "D:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.30 x64 PCNT.exe"
-        ElseIf My.Computer.Name = "BUREAU" Or My.Computer.Name = "TOUR-COURTOISIE" Or My.Computer.Name = "WORKSTATION" Then
-            engine = "E:\JEUX\ARENA CHESS 3.5.1\Engines\Eman\20T Eman 8.30 x64 BMI2.exe"
-        End If
+        engine = "BrainLearn.exe"
         pgnextract = "pgn-extract.exe"
         mode = "bestmove"
         delay_sec = 600
