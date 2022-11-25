@@ -1,4 +1,4 @@
-﻿Imports System.Management 'ajouter référence system.management
+Imports System.Management 'ajouter référence system.management
 Imports VB = Microsoft.VisualBasic
 
 Module modFonctions
@@ -200,7 +200,7 @@ Module modFonctions
                 chaineAnalyse = "go depth " & prof & " searchmoves " & suiteUCI.Substring(suiteUCI.LastIndexOf(" ") + 1)
             End If
 
-            'position/coup déjà dans le fichierEXP ?
+            'position/coup déjà dans le EXPFile ?
             If prof > 0 And (InStr(moteur_court, "eman", CompareMethod.Text) > 0 Or InStr(moteur_court, "hypnos", CompareMethod.Text) > 0 Or InStr(moteur_court, "stockfishmz", CompareMethod.Text) > 0) Then
                 chaine_mem = retourExperience(chainePosition, suiteUCI.Substring(suiteUCI.LastIndexOf(" ") + 1), prof)
             End If
@@ -230,17 +230,17 @@ Module modFonctions
                         End If
                     End If
                     If InStr(chaine, "upper", CompareMethod.Text) = 0 And InStr(chaine, "lower", CompareMethod.Text) = 0 Then
-                        prof_actuelle = chaine.Substring(chaine.IndexOf(" depth ") + 7)
-                        profAnalyse = CInt(prof_actuelle.Substring(0, prof_actuelle.IndexOf(" ")))
-                        prof_actuelle = "P" & Format(profAnalyse, "0")
+                        currentDepth = chaine.Substring(chaine.IndexOf(" depth ") + 7)
+                        profAnalyse = CInt(currentDepth.Substring(0, currentDepth.IndexOf(" ")))
+                        currentDepth = "P" & Format(profAnalyse, "0")
                     ElseIf InStr(chaine, "upper", CompareMethod.Text) > 0 Then
-                        prof_actuelle = chaine.Substring(chaine.IndexOf(" depth ") + 7)
-                        profAnalyse = CInt(prof_actuelle.Substring(0, prof_actuelle.IndexOf(" ")))
-                        prof_actuelle = "P" & Format(profAnalyse, "0") & "+"
+                        currentDepth = chaine.Substring(chaine.IndexOf(" depth ") + 7)
+                        profAnalyse = CInt(currentDepth.Substring(0, currentDepth.IndexOf(" ")))
+                        currentDepth = "P" & Format(profAnalyse, "0") & "+"
                     ElseIf InStr(chaine, "lower", CompareMethod.Text) > 0 Then
-                        prof_actuelle = chaine.Substring(chaine.IndexOf(" depth ") + 7)
-                        profAnalyse = CInt(prof_actuelle.Substring(0, prof_actuelle.IndexOf(" ")))
-                        prof_actuelle = "P" & Format(profAnalyse, "0") & "-"
+                        currentDepth = chaine.Substring(chaine.IndexOf(" depth ") + 7)
+                        profAnalyse = CInt(currentDepth.Substring(0, currentDepth.IndexOf(" ")))
+                        currentDepth = "P" & Format(profAnalyse, "0") & "-"
                     End If
                     If InStr(chaine, "time", CompareMethod.Text) > 0 Then
                         ecoule_actuel = chaine.Substring(chaine.IndexOf(" time ") + 6)
@@ -678,29 +678,29 @@ Module modFonctions
                     entree.WriteLine(tabChaine(i))
                     If InStr(tabChaine(i), ".exp") > 0 Then
 
-                        fichierEXP = Trim(tabChaine(i).Substring(tabChaine(i).IndexOf(" value ") + 7))
-                        If InStr(fichierEXP, ":") = 0 Or InStr(fichierEXP, "\") = 0 Then
-                            fichierEXP = Replace(chemin, nomFichier(chemin), nomFichier(fichierEXP))
+                        EXPFile = Trim(tabChaine(i).Substring(tabChaine(i).IndexOf(" value ") + 7))
+                        If InStr(EXPFile, ":") = 0 Or InStr(EXPFile, "\") = 0 Then
+                            EXPFile = Replace(chemin, nomFichier(chemin), nomFichier(EXPFile))
                         End If
 
-                        moteurEntete = ""
+                        headerEngine = ""
                         chaine = ""
-                        While moteurEntete = "" And InStr(chaine, "not open", CompareMethod.Text) = 0
+                        While headerEngine = "" And InStr(chaine, "not open", CompareMethod.Text) = 0
                             chaine = sortie.ReadLine
                             If InStr(chaine, "info", CompareMethod.Text) > 0 _
                             And InStr(chaine, "string", CompareMethod.Text) > 0 _
                             And (InStr(chaine, "collision", CompareMethod.Text) > 0 Or InStr(chaine, "duplicate", CompareMethod.Text) > 0) Then
-                                moteurEntete = Replace(chaine, fichierEXP, nomFichier(fichierEXP)) & vbCrLf
+                                headerEngine = Replace(chaine, EXPFile, nomFichier(EXPFile)) & vbCrLf
                             End If
                             Threading.Thread.Sleep(1)
                         End While
 
-                        If fichierEXP <> "" And Not My.Computer.FileSystem.FileExists(fichierEXP) Then
+                        If EXPFile <> "" And Not My.Computer.FileSystem.FileExists(EXPFile) Then
                             If InStr(moteur_court, "eman 7", CompareMethod.Text) > 0 Or InStr(moteur_court, "eman 8", CompareMethod.Text) > 0 _
                             Or InStr(moteur_court, "hypnos", CompareMethod.Text) > 0 Or InStr(moteur_court, "stockfishmz", CompareMethod.Text) > 0 Then
-                                My.Computer.FileSystem.WriteAllText(fichierEXP, "SugaR Experience version 2", False, New System.Text.UTF8Encoding(False))
+                                My.Computer.FileSystem.WriteAllText(EXPFile, "SugaR Experience version 2", False, New System.Text.UTF8Encoding(False))
                             End If
-                            entree.WriteLine("setoption name Experience File value " & fichierEXP)
+                            entree.WriteLine("setoption name Experience File value " & EXPFile)
                         End If
                     End If
                 End If
