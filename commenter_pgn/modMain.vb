@@ -400,7 +400,13 @@ Module modMain
                     listeEPD = "" 'repetition
                     epdBlanc = "" 'repetition
                     epdNoir = "" 'repetition
-                    indexCoup = 0
+                    chaine = ""
+                    If positionDepart = "" Or InStr(positionDepart, " w ", CompareMethod.Text) > 0 Then
+                        indexCoup = 0
+                    Else
+                        indexCoup = 1
+                        suiteFR = "1. ... "
+                    End If
                     nbIdem = 0
 
                     nouvellePartie()
@@ -409,7 +415,6 @@ Module modMain
                     indexReprise = 0
                     depart = 0
 
-                    chaine = ""
                     tabLigne = Split(ligne, " ")
                     If nbCoups = 0 And tabLigne.Length - 1 > 0 Then
                         nbCoups = tabLigne.Length - 1
