@@ -571,11 +571,7 @@ Module modMain
                                     End If
                                 Next
 
-                                If InStr(positionDepart, " b ", CompareMethod.Text) > 0 Then
-                                    chaine = formatage(chaine_mem, indexCoup + 1)
-                                Else
-                                    chaine = formatage(chaine_mem, indexCoup)
-                                End If
+                                chaine = formatage(chaine_mem, indexCoup)
 
                                 'maj 600_sec.epd
                                 chaine_mem = Replace(chaine, "{", ";")
